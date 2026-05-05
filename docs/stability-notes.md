@@ -28,8 +28,8 @@ Revisit this if:
 ## Why PM2 Config Is Generic
 
 - The PM2 config is committed in the repo, but it should still be environment-aware.
-- Paths are derived from the repo location or overridable via `AI_SYSTEM_REPO_ROOT` and `AI_SYSTEM_ENV_FILE`.
-- This keeps the config usable if the VPS path changes, while preserving a single documented process name and start command.
+- Paths are derived from the app directory or overridable via `AI_SYSTEM_APP_DIR` and `AI_SYSTEM_ENV_FILE`.
+- The first manual VPS layout is `/opt/ai-system/app` for the code and `/opt/ai-system/shared/.env` for shared runtime env.
 - The first manual deploy is still the source of truth for validating the VPS path and env layout before automation is trusted.
 
 ## Operational Rule

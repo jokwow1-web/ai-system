@@ -1,13 +1,13 @@
 const path = require("node:path")
 
-const repoRoot = process.env.AI_SYSTEM_REPO_ROOT || path.resolve(__dirname, "..")
-const sharedEnvFile = process.env.AI_SYSTEM_ENV_FILE || path.join(repoRoot, "shared", ".env")
+const appRoot = process.env.AI_SYSTEM_APP_DIR || path.resolve(__dirname)
+const sharedEnvFile = process.env.AI_SYSTEM_ENV_FILE || path.join(appRoot, "..", "shared", ".env")
 
 module.exports = {
   apps: [
     {
       name: "ai-system-web",
-      cwd: repoRoot,
+      cwd: appRoot,
       script: "npm",
       args: "run start",
       env_file: sharedEnvFile,
