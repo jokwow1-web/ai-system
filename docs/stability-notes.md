@@ -30,6 +30,7 @@ Revisit this if:
 - The PM2 config is committed in the repo, but it should still be environment-aware.
 - Paths are derived from the repo location or overridable via `AI_SYSTEM_REPO_ROOT` and `AI_SYSTEM_ENV_FILE`.
 - This keeps the config usable if the VPS path changes, while preserving a single documented process name and start command.
+- The first manual deploy is still the source of truth for validating the VPS path and env layout before automation is trusted.
 
 ## Operational Rule
 

@@ -15,26 +15,54 @@ Before any push or deploy:
 3. Run `npm run build`.
 4. Only proceed if the build passes.
 
+## First Deploy Reality Check
+
+Run this manually on the VPS first. Do not use `scripts/deploy.sh` for the first boot.
+
+1. Check runtime:
+   - `node -v`
+   - `npm -v`
+   - `pm2 -v`
+2. Create a clean folder:
+   - `mkdir -p /opt/ai-system`
+   - `cd /opt/ai-system`
+3. Clone the repo:
+   - `git clone https://github.com/jokwow1-web/ai-system.git app`
+   - `cd app`
+4. Set environment:
+   - `mkdir -p /opt/ai-system/shared`
+   - create `/opt/ai-system/shared/.env`
+   - `ln -s /opt/ai-system/shared/.env .env`
+5. Install dependencies:
+   - `npm ci`
+6. Build:
+   - `npm run build`
+7. Run manually:
+   - `npm run start`
+   - verify with `curl localhost:3000`
+8. Only after the manual run succeeds, move to PM2:
+   - `pm2 start ecosystem.config.js`
+   - or `pm2 start npm --name "ai-system-web" -- run start`
+9. Save startup state:
+   - `pm2 save`
+   - `pm2 startup`
+10. Check health:
+   - `pm2 status`
+   - `pm2 logs --lines 20`
+   - `curl localhost:3000`
+
+If any of steps 1-7 fail, fix the environment before relying on automation.
+
 ## Deploy Contract
 
 - Deploy only from `main`.
-- VPS deploy flow must be:
+- The ongoing VPS deploy flow after the first manual boot must be:
   1. `git checkout main`
   2. `git pull --ff-only origin main`
   3. `npm ci`
   4. `npm run build`
   5. `pm2 startOrReload ecosystem.config.js --env production --update-env`
   6. Verify `pm2 status`, recent logs, and an HTTP health check.
-
-## First Deploy Reality Check
-
-- The first real deploy should be run manually on the VPS before depending on automation.
-- Validate these variables on the server:
-  - Node version
-  - repository path
-  - `.env` location
-  - PM2 availability and startup persistence
-- If manual start fails, fix the VPS contract before relying on `scripts/deploy.sh`.
 
 ## Runtime Contract
 

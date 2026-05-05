@@ -18,5 +18,6 @@ Next.js app with a strict local-to-VPS production workflow.
 - Production deploys rebuild on the VPS with `npm ci` and `npm run build`.
 - Rollbacks are Git commit based.
 - Any stability workaround must be documented in [docs/stability-notes.md](docs/stability-notes.md).
+- The first VPS deploy is manual and must follow [docs/production-workflow.md](docs/production-workflow.md) exactly.
 
 See [docs/production-workflow.md](docs/production-workflow.md) for the full contract.

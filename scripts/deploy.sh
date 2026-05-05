@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-APP_DIR="$BASE_DIR"
-SHARED_ENV="$BASE_DIR/shared/.env"
+APP_DIR="${AI_SYSTEM_APP_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+SHARED_ENV="${AI_SYSTEM_ENV_FILE:-$(cd "$APP_DIR/.." && pwd)/shared/.env}"
 PROCESS_NAME="ai-system-web"
 HEALTHCHECK_URL="${HEALTHCHECK_URL:-http://127.0.0.1:3000/sbu}"
 
