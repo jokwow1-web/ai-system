@@ -19,7 +19,7 @@ module.exports = {
         NODE_ENV: "production",
         PORT: process.env.PORT || 3000,
       },
-      autorestart: true,
+      autorestart: false,
       max_restarts: 10,
       kill_timeout: 10000,
       time: true,

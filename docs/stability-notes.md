@@ -31,6 +31,7 @@ Revisit this if:
 - Paths are derived from the app directory or overridable via `AI_SYSTEM_APP_DIR` and `AI_SYSTEM_ENV_FILE`.
 - The first manual VPS layout is `/opt/ai-system/app` for the code and `/opt/ai-system/shared/.env` for shared runtime env.
 - PM2 launches Next directly instead of wrapping `npm run start` because the npm wrapper caused restart churn and port conflicts during the first VPS validation.
+- PM2 auto-restart is disabled for the first-deploy validation window so a healthy server is not cycled into a port race while we prove the runtime path.
 - The first manual deploy is still the source of truth for validating the VPS path and env layout before automation is trusted.
 
 ## Operational Rule
