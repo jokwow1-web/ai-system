@@ -26,6 +26,16 @@ Before any push or deploy:
   5. `pm2 startOrReload ecosystem.config.js --env production --update-env`
   6. Verify `pm2 status`, recent logs, and an HTTP health check.
 
+## First Deploy Reality Check
+
+- The first real deploy should be run manually on the VPS before depending on automation.
+- Validate these variables on the server:
+  - Node version
+  - repository path
+  - `.env` location
+  - PM2 availability and startup persistence
+- If manual start fails, fix the VPS contract before relying on `scripts/deploy.sh`.
+
 ## Runtime Contract
 
 - Production env lives in `/opt/ai-system/shared/.env`.
