@@ -1,0 +1,18 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+.env*.local
+shared/.env
+
+# Build and runtime artifacts
+node_modules/
+.next/
+.vercel/
+dist/
+coverage/
+
+# Common ignores
+.DS_Store
+*.log
+next.user-config.*
